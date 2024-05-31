@@ -71,7 +71,7 @@ public class Main {
         int[][] grid = new int[3][3];
         Scanner scanner = new Scanner(System.in);
         boolean winningGame = false;
-        int currentPlayer = 1; // 1 = first player, 2 = second player
+        int currentPlayer = 1; // 1 = first player
         
         while (!winningGame) {
             printGrid(grid);
@@ -94,7 +94,7 @@ public class Main {
                 winningGame = true;
             }
 
-            currentPlayer = (currentPlayer == 1) ? 2 : 1; // switch player
+            currentPlayer = (currentPlayer == 1) ? 2 : 1; // switch player, 2 = second player
         }
         scanner.close();
     }
