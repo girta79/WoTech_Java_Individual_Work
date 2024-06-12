@@ -6,9 +6,10 @@ Easy: Work with String in ArrayList. All the actions should be available for use
 
 Medium: Work with String User should be able to repeat all the actions infinitely.
 
-Hard: Create a Book class and work with Book object to the ArrayList.*/
+NOT DONE Hard: Create a Book class and work with Book object to the ArrayList.*/
 
 
+Easy+Medium:
 Main.java
 
 import java.util.ArrayList;
@@ -26,7 +27,7 @@ public class Main {
             System.out.println("Press 3 to show the book list");
             System.out.println("Press x to quit");
             
-            var userInput = scanner.nextLine();
+            String userInput = scanner.nextLine();
             
 
             if(userInput.equals("1")) {
@@ -41,12 +42,13 @@ public class Main {
                 System.out.println("Invalid input, please try again");
             }
         }
+        scanner.close();
     }
 
     public static void addBook() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the name of the book you want to add:");
-        var name = scanner.nextLine();
+        String name = scanner.nextLine();
 
         bookManager.addBook(name);
     }
@@ -54,16 +56,40 @@ public class Main {
     public static void removeBook() {
         Scanner scanner = new Scanner(System.in);
         System.out.println("Please enter the name of the book you want to remove:");
-        var name = scanner.nextLine();
+        String name = scanner.nextLine();
 
         bookManager.removeBook(name);
     }
 
     public static void showBookList() {
-        var books = bookManager.getBooks();
+        ArrayList<String> books = bookManager.getBooks();
         System.out.println("Your book list:");
-        for(var book : books) {
+        for(String book : books) {
             System.out.println(book);
         }
+    }
+}
+
+BookManager.java
+
+   import java.util.ArrayList;
+
+public class BookManager {
+    private ArrayList<String> books = new ArrayList<>();
+
+    public void addBook(String book) {
+        books.add(book);
+    }
+
+    public void removeBook(String book) {
+        if (books.contains(book)) {
+            books.remove(book);
+        } else {
+            System.out.println("The book is not found in the list");
+        }
+    }
+
+    public ArrayList<String> getBooks() {
+        return books;
     }
 }
